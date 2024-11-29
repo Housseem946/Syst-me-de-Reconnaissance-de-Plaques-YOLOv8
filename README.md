@@ -1,9 +1,8 @@
-# Système-de-Reconnaissance-de-Plaques-YOLOv8
+# Système de Reconnaissance de Plaques-YOLOv8
 
 ## Description du Projet
-Ce projet, développé dans le cadre de mon module "Projet Technique & Scientifique" lors de ma formation en école d’ingénieurs en Data et Intelligence Artificielle, est une application de reconnaissance automatique des plaques d'immatriculation à partir des Images/Vdéo . Il utilise les capacités des modèles de **computer vision**, en particulier **YOLOv8** et **OCR**, pour détecter et lire des plaques à partir de vidéos.
 
-Ce projet a été une excellente opportunité pour approfondir mes connaissances en Computer Vision, explorer les modèles YOLO et OCR, et renforcer mes compétences en programmation Python.
+Ce projet, développé dans le cadre de mon module "Projet Technique & Scientifique" lors de ma formation en école d’ingénieurs en Data et Intelligence Artificielle, est une application de reconnaissance automatique des plaques d'immatriculation à partir des Images/Vdéo . Il utilise les capacités des modèles de **computer vision**, en particulier **YOLOv8** et **OCR**, pour détecter et lire des plaques à partir de vidéos.
 
 ## Fonctionnalités
 
@@ -21,9 +20,9 @@ Ce projet a été une excellente opportunité pour approfondir mes connaissances
 
 ## Data 
 
-- La vidéo utilisée pour les tests peut être téléchargée ici.
-- Un modèle pré-entraîné YOLOv8n a été utilisé pour détecter les véhicules.
-- Un détecteur de plaques a été entraîné avec le dataset disponible ici.
+- La vidéo utilisée dans notre cas pour les tests peut être téléchargée [ici](https://drive.google.com/file/d/1JbwLyqpFCXmftaJY1oap8Sa6KfjoWJta/view).
+- Un modèle pré-entraîné YOLOv8n a été utilisé pour détecter les véhicules disponible [ici](https://drive.google.com/file/d/1Zmf5ynaTFhmln2z7Qvv-tgjkWQYQ9Zdw/view).
+- Un détecteur de plaques a été entraîné avec le dataset disponible [ici](https://universe.roboflow.com/roboflow-universe-projects/license-plate-recognition-rxg4e/dataset/4).
 
 ## Dépendances
 
@@ -46,13 +45,13 @@ git clone https://github.com/abewley/sort
 #### Créer un environnement virtuel :
 
 ```bash
-conda create --prefix ./env python=3.10 -y
+python -m venv env
 ```
 
 #### Activer l’environnement :
 
 ```bash
-source activate ./env
+.\env\Scripts\activate
 ```
 
 #### Installer les dépendances :
