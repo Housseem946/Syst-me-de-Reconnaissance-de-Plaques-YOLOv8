@@ -80,6 +80,11 @@ python add_missing_data.py
 python visualize.py
 ```
 
+## Résultat final du test 
+
+[🎥 Regardez la vidéo ici](./out.mp4)
+
+
 
 
 
