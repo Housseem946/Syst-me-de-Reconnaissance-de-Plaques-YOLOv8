@@ -37,35 +37,52 @@ Le projet dépend des modules suivants :
 
 #### Pour installer et utiliser le module sort, clonez le dépôt suivant :
 
+```bash
 git clone https://github.com/abewley/sort
+```
 
 ## Installation
 
 #### Créer un environnement virtuel :
 
+```bash
 conda create --prefix ./env python=3.10 -y
+```
 
 #### Activer l’environnement :
 
+```bash
 source activate ./env
+```
 
 #### Installer les dépendances :
 
+```bash
 pip install -r requirements.txt
+```
 
 ## Exécution du Projet
 
 1. Détection et extraction initiales : Exécutez le fichier main.py sur une vidéo d'entrée pour générer un fichier test.csv contenant les données détectées.
-
+   
+```bash
 python main.py
+```
 
 2. Interpolation des données manquantes : Exécutez le script add_missing_data.py pour interpoler les valeurs manquantes et améliorer les résultats.
 
+```bash
 python add_missing_data.py
+```
 
 3. Visualisation finale : Exécutez le script visualize.py pour générer une vidéo contenant les résultats fluides et précis de la détection et de la reconnaissance.
-
+   
+```bash
 python visualize.py
+```
+
+
+
 
 
 
