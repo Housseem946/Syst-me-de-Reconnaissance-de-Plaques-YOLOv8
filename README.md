@@ -82,7 +82,7 @@ python visualize.py
 
 ## Résultat final du test 
 
-[🎥 Regardez la vidéo ici](./https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
+[🎥 Regardez la vidéo ici](https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
 
 
 
