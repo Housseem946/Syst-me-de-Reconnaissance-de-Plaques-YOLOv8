@@ -2,14 +2,16 @@
 
 ## Description du Projet
 
-Ce projet, développé dans le cadre de mon module "Projet Technique & Scientifique" lors de ma formation en école d’ingénieurs en Data et Intelligence Artificielle, est une application de reconnaissance automatique des plaques d'immatriculation à partir des Images/Vdéo . Il utilise les capacités des modèles de **computer vision**, en particulier **YOLOv8** et **OCR**, pour détecter et lire des plaques à partir de vidéos.
+Ce projet, développé dans le cadre de notre module PAS (Projet Académique & Scientifique) lors de notre formation à l'ESILV en Data et Intelligence Artificielle, consiste en une application de reconnaissance automatique des plaques d'immatriculation à partir d'images ou de vidéos (une vidéo dans notre cas).
+
+Ce projet exploite les capacités des modèles de computer vision, en particulier YOLOv8 et OCR, pour détecter et lire les plaques d'immatriculation à partir de vidéos.
 
 ## Fonctionnalités
 
 - Détection des véhicules : Utilisation de YOLOv8 pré-entraîné pour détecter les véhicules dans une vidéo.
 - Détection des plaques : Un modèle entraîné sur des données spécifiques pour localiser les plaques d'immatriculation.
 - Reconnaissance des caractères : Extraction des numéros de plaques à l’aide d’un module OCR (EasyOCR).
-- Interpolation des données manquantes : Gestion des valeurs manquantes pour des résultats plus fluides.
+- Interpolation des données manquantes : Gestion des valeurs manquantes à travers le module add_missing_data.py pour des résultats plus fluides.
 - Visualisation des résultats : Affichage des détections et des numéros extraits avec une sortie vidéo fluide.
 
 ## Technologies
@@ -17,6 +19,7 @@ Ce projet, développé dans le cadre de mon module "Projet Technique & Scientifi
 - Ultralytics YOLOv8
 - OpenCV
 - Tesseract OCR
+- Streamlit
 
 ## Data 
 
@@ -82,7 +85,7 @@ python visualize.py
 
 ## Résultat final du test 
 
-[🎥 Regardez la vidéo ici](./out.mp4)
+[🎥 Regardez la vidéo ici](https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
 
 
 
