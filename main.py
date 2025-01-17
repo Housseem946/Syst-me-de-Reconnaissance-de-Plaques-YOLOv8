@@ -8,6 +8,12 @@ import sys
 sys.path.append("c:/Users/houss/OneDrive/Bureau/Pas_Project") 
 from sort.sort import *  # Here we will use the sort project 
 
+import torch
+
+# Désactivez CUDA
+torch.cuda.is_available = lambda: False
+
+
 results = {}
 
 mot_tracker = Sort()
@@ -15,6 +21,8 @@ mot_tracker = Sort()
 # load models
 coco_model = YOLO('yolov8n.pt')
 license_plate_detector = YOLO('license_plate_detector.pt')
+
+
 
 # load video
 cap = cv2.VideoCapture('C:/Users/houss/OneDrive/Bureau/ING_3/S9/PAS/sample.mp4') # Change path here if you want to test on another input 
