@@ -5,9 +5,10 @@ __pycache__
 .vscode/
 *.pyc
 *.log
-.gitattributes
-.gitignore
+.gitattributes/
+.gitignore/
 sort/
 *.jpg
 *.png
+*.csv
 
