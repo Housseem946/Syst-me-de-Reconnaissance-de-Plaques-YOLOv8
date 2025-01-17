@@ -1,6 +1,5 @@
 env/
 out.mp4
-sort/
 *.mp4
 __pycache__
 .vscode/
@@ -9,3 +8,6 @@ __pycache__
 .gitattributes
 .gitignore
 sort/
+*.jpg
+*.png
+
