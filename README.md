@@ -126,12 +126,8 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 
 ## 📷 Aperçu de l'application
 
-
-![alt text](<WhatsApp Image 2025-01-17 à 18.10.23_3f098456.jpg>)
-
 #### Étape 1 : Détection et extraction initiales
 
-![alt text](image.png)
 
 #### Étape 2 : Interpolation des données manquantes
 
@@ -139,9 +135,11 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 #### Étape 3 : Génération de la vidéo finale
 
 
-Pour toute question, vous pouvez me contacter via LinkedIn : https://www.linkedin.com/in/houssem-rezgui-/
+## 🛡️ Contribuer
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request pour des améliorations
+Je vous invite à contribuer à ce projet pour l'améliorer et y ajouter de nouvelles fonctionnalités. Si vous avez des idées ou des suggestions, n'hésitez pas à soumettre vos propositions.
+
+Pour toute question, vous pouvez me contacter via LinkedIn : https://www.linkedin.com/in/houssem-rezgui-/
 
 
 
