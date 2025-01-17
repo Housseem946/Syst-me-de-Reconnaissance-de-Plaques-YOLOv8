@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import subprocess
+from moviepy import VideoFileClip
 
 # Titre de l'application
 st.title("Système de Reconnaissance de Plaques - YOLOv8")
@@ -43,26 +44,39 @@ if uploaded_file is not None:
         st.error(f"Erreur lors de l'interpolation des données : {e}")
 
     # Étape 3 : Génération de la vidéo finale
-    # Étape 3 : Génération de la vidéo finale
     st.subheader("Étape 3 : Génération de la vidéo finale")
+
+    def verify_and_convert_video(input_path, output_path):
+        """Vérifie et convertit la vidéo au format compatible si nécessaire."""
+        try:
+            clip = VideoFileClip(input_path)
+            clip.write_videofile(output_path, codec="libx264", audio_codec="aac")
+            return True
+        except Exception as e:
+            return False, str(e)
+
     try:
+        st.write("Traitement en cours ...")
         run_script("visualize.py")  # Appeler le script visualize.py
         output_path = "out.mp4"
+
         if os.path.exists(output_path):
-            st.success("Vidéo finale générée avec succès !")
-            # Afficher la vidéo directement
-            st.video(output_path)
-            # Option pour télécharger la vidéo de sortie
-            with open(output_path, "rb") as file:
-                st.download_button(
-                    label="Télécharger la vidéo finale",
-                    data=file,
-                    file_name="out.mp4",
-                    mime="video/mp4"
-                )
+            # Vérifiez si la vidéo est lisible et convertissez-la si nécessaire
+            converted = verify_and_convert_video(output_path, "output_converted.mp4")
+            if converted == True:
+                st.success("Vidéo finale générée et convertie avec succès !")
+                st.video("output_converted.mp4")  # Afficher la vidéo convertie
+                # Option pour télécharger la vidéo convertie
+                with open("output_converted.mp4", "rb") as file:
+                    st.download_button(
+                        label="Télécharger la vidéo finale",
+                        data=file,
+                        file_name="output_converted.mp4",
+                        mime="video/mp4"
+                    )
+            else:
+                st.error(f"Erreur lors de la conversion de la vidéo : {converted[1]}")
         else:
             st.error("Fichier 'out.mp4' introuvable après la visualisation.")
     except Exception as e:
         st.error(f"Erreur lors de la génération de la vidéo finale : {e}")
-
-
