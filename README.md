@@ -120,10 +120,6 @@ python visualize.py
 ```
 Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 
-## Résultat final du test pour notre exemple
-
-[🎥 Regardez la vidéo ici](https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
-
 ## 📷 Aperçu de l'application
 
 
@@ -143,6 +139,11 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 ### Étape 3 : Génération de la vidéo finale
 
 ![WhatsApp Image 2025-01-17 à 19 50 07_ceb56d2a](https://github.com/user-attachments/assets/87b41d28-6063-42e7-968a-8b5f2940371f)
+
+
+## Résultat final du test pour notre exemple
+
+[🎥 Regardez la vidéo ici](https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
 
 
 ## 🛡️ Contribuer
