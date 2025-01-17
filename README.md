@@ -142,8 +142,7 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 
 ### Étape 3 : Génération de la vidéo finale
 
-![WhatsApp Image 2025-01-17 à 19 29 36_5096fa4b](https://github.com/user-attachments/assets/adaf82d7-07fc-4b53-854b-99124118d70c)
-
+![WhatsApp Image 2025-01-17 à 19 50 07_ceb56d2a](https://github.com/user-attachments/assets/87b41d28-6063-42e7-968a-8b5f2940371f)
 
 
 ## 🛡️ Contribuer
