@@ -126,13 +126,20 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 
 ## 📷 Aperçu de l'application
 
+![WhatsApp Image 2025-01-17 à 18 10 23_cd1e0c15](https://github.com/user-attachments/assets/cc9a7dca-8e45-4378-8283-232f962cf80a)
+
+
 #### Étape 1 : Détection et extraction initiales
+![WhatsApp Image 2025-01-17 à 18 54 46_46444da3](https://github.com/user-attachments/assets/6c5449a5-6a40-4e52-a47d-640d3725d333)
 
 
 #### Étape 2 : Interpolation des données manquantes
 
+![WhatsApp Image 2025-01-17 à 19 13 38_86e840ec](https://github.com/user-attachments/assets/7efd74e7-4604-4bd0-9814-902222d9cf3f)
 
 #### Étape 3 : Génération de la vidéo finale
+![WhatsApp Image 2025-01-17 à 19 29 36_5096fa4b](https://github.com/user-attachments/assets/adaf82d7-07fc-4b53-854b-99124118d70c)
+
 
 
 ## 🛡️ Contribuer
