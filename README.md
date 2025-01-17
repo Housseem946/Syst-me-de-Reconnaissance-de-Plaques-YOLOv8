@@ -47,7 +47,7 @@ git clone https://github.com/abewley/sort
 ## Structure du Projet
 
 ```
-├── notebooks 
+├── sort # Module cloné d'un autre repo permettant le suivi des plaques dans les vidéos
 │  
 ├── add_missing_data.py # interpoler les valeurs manquantes et améliorer les résultats.
 ├── app.py # fichier Streamlit pour créer une interface utilisateur interactive pour l'application.
@@ -123,6 +123,25 @@ Vous trouverez le résultat dans le répertoire sous le nom "out.mp4".
 ## Résultat final du test pour notre exemple
 
 [🎥 Regardez la vidéo ici](https://drive.google.com/file/d/17xrx6mQ1JLJtnywrWrwzypNUjXs7VqxV/view?usp=sharing)
+
+## 📷 Aperçu de l'application
+
+
+![alt text](<WhatsApp Image 2025-01-17 à 18.10.23_3f098456.jpg>)
+
+#### Étape 1 : Détection et extraction initiales
+
+![alt text](image.png)
+
+#### Étape 2 : Interpolation des données manquantes
+
+
+#### Étape 3 : Génération de la vidéo finale
+
+
+Pour toute question, vous pouvez me contacter via LinkedIn : https://www.linkedin.com/in/houssem-rezgui-/
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request pour des améliorations
 
 
 

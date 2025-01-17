@@ -1,22 +1,21 @@
 import streamlit as st
-import cv2
-from ultralytics import YOLO
-import torch
-import numpy as np
-from sort.sort import Sort
-from util import get_car, read_license_plate  
-
-import torch
-
-# Désactivez CUDA
-torch.cuda.is_available = lambda: False
+import os
+import subprocess
 
 # Titre de l'application
 st.title("Système de Reconnaissance de Plaques - YOLOv8")
 
 # Section de téléchargement de la vidéo
-st.subheader("Upload your video")
-uploaded_file = st.file_uploader("Drag and drop or click to upload a video", type=["mp4"])
+st.subheader("Téléchargez votre vidéo")
+uploaded_file = st.file_uploader("Glissez-déposez ou cliquez pour télécharger une vidéo", type=["mp4"])
+
+# Fonction pour exécuter des scripts Python
+def run_script(script_name):
+    try:
+        subprocess.run(["python", script_name], check=True)
+        st.success(f"Exécution de {script_name} terminée avec succès.")
+    except subprocess.CalledProcessError as e:
+        st.error(f"Erreur lors de l'exécution de {script_name} : {e}")
 
 if uploaded_file is not None:
     # Sauvegarder la vidéo téléchargée temporairement
@@ -24,97 +23,46 @@ if uploaded_file is not None:
     with open(input_path, "wb") as f:
         f.write(uploaded_file.read())
     
-    st.success("Video uploaded successfully!")
+    st.success("Vidéo téléchargée avec succès !")
 
-    # Détecter les plaques et générer la sortie
-    st.subheader("Processing the video...")
-
+    # Étape 1 : Détection initiale
+    st.subheader("Étape 1 : Détection et extraction initiales")
     try:
-        # Vérification du GPU
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        st.write(f"Using device: {device}")
-
-        # Chargement des modèles YOLO
-        st.write("Chargement du modèle YOLO...")
-        coco_model = YOLO('yolov8n.pt')  # Modèle pour la détection des véhicules
-        coco_model.to(device)
-
-        license_plate_detector = YOLO('license_plate_detector.pt')  # Modèle pour la détection des plaques
-        license_plate_detector.to(device)
-        st.write("Chargement du modèle YOLO terminé.")
-
-        # Variables pour le traitement
-        results = {}
-        mot_tracker = Sort()
-        cap = cv2.VideoCapture(input_path)
-
-        # Configuration de la sortie vidéo
-        output_path = "./output_video.mp4"
-        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-        fps = int(cap.get(cv2.CAP_PROP_FPS))
-        width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
-
-        frame_nmr = -1
-        ret = True
-        st.write("Détection des plaques commencée.")
-        while ret:
-            frame_nmr += 1
-            ret, frame = cap.read()
-            if ret:
-                # Détection des véhicules
-                detections = coco_model(frame, device=device, conf=0.25)[0]  # Ajustez conf si nécessaire
-                detections_ = []
-                for detection in detections.boxes.data.tolist():
-                    x1, y1, x2, y2, score, class_id = detection
-                    if int(class_id) in [2, 3, 5, 7]:  # Classes de véhicules
-                        detections_.append([x1, y1, x2, y2, score])
-
-                # Suivi des véhicules
-                track_ids = mot_tracker.update(np.asarray(detections_))
-
-                # Détection des plaques
-                license_plates = license_plate_detector(frame, device=device, conf=0.25)[0]
-                for license_plate in license_plates.boxes.data.tolist():
-                    x1, y1, x2, y2, score, class_id = license_plate
-
-                    # Attribution des plaques aux véhicules
-                    xcar1, ycar1, xcar2, ycar2, car_id = get_car(license_plate, track_ids)
-
-                    if car_id != -1:
-                        # Découper et traiter la plaque
-                        license_plate_crop = frame[int(y1):int(y2), int(x1): int(x2), :]
-                        license_plate_crop_gray = cv2.cvtColor(license_plate_crop, cv2.COLOR_BGR2GRAY)
-                        _, license_plate_crop_thresh = cv2.threshold(license_plate_crop_gray, 64, 255, cv2.THRESH_BINARY_INV)
-
-                        # Lecture du numéro de plaque
-                        license_plate_text, license_plate_text_score = read_license_plate(license_plate_crop_thresh)
-
-                        if license_plate_text is not None:
-                            results[frame_nmr][car_id] = {'car': {'bbox': [xcar1, ycar1, xcar2, ycar2]},
-                                                          'license_plate': {'bbox': [x1, y1, x2, y2],
-                                                                            'text': license_plate_text,
-                                                                            'bbox_score': score,
-                                                                            'text_score': license_plate_text_score}}
-                # Écrire la frame traitée dans la vidéo de sortie
-                out.write(frame)
-
-        cap.release()
-        out.release()
-
-        # Afficher la vidéo de sortie
-        st.subheader("Résultat de la détection")
-        st.video(output_path)
-
-        # Option pour télécharger la vidéo de sortie
-        with open(output_path, "rb") as file:
-            st.download_button(
-                label="Télécharger la vidéo traitée",
-                data=file,
-                file_name="output_video.mp4",
-                mime="video/mp4"
-            )
-
+        os.rename(input_path, "sample.mp4")  # Renommer la vidéo téléchargée en "sample.mp4" pour correspondre à main.py
+        st.write("Traitement de la vidéo en cours...")
+        run_script("main.py")  # Appeler le script main.py
     except Exception as e:
-        st.error(f"Une erreur s'est produite : {e}")
+        st.error(f"Erreur lors de la détection initiale : {e}")
+
+    # Étape 2 : Interpolation des données manquantes
+    st.subheader("Étape 2 : Interpolation des données manquantes")
+    try:
+        st.write("Interpolation des données...")
+        run_script("add_missing_data.py")  # Appeler le script add_missing_data.py
+    except Exception as e:
+        st.error(f"Erreur lors de l'interpolation des données : {e}")
+
+    # Étape 3 : Génération de la vidéo finale
+    # Étape 3 : Génération de la vidéo finale
+    st.subheader("Étape 3 : Génération de la vidéo finale")
+    try:
+        run_script("visualize.py")  # Appeler le script visualize.py
+        output_path = "out.mp4"
+        if os.path.exists(output_path):
+            st.success("Vidéo finale générée avec succès !")
+            # Afficher la vidéo directement
+            st.video(output_path)
+            # Option pour télécharger la vidéo de sortie
+            with open(output_path, "rb") as file:
+                st.download_button(
+                    label="Télécharger la vidéo finale",
+                    data=file,
+                    file_name="out.mp4",
+                    mime="video/mp4"
+                )
+        else:
+            st.error("Fichier 'out.mp4' introuvable après la visualisation.")
+    except Exception as e:
+        st.error(f"Erreur lors de la génération de la vidéo finale : {e}")
+
+
