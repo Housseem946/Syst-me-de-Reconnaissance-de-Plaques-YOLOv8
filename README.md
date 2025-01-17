@@ -2,7 +2,7 @@
 
 ## Description du Projet
 
-Ce projet, développé dans le cadre de mon module "Projet Technique & Scientifique" lors de ma formation en école d’ingénieurs en Data et Intelligence Artificielle, est une application de reconnaissance automatique des plaques d'immatriculation à partir des Images/Vdéo . Il utilise les capacités des modèles de **computer vision**, en particulier **YOLOv8** et **OCR**, pour détecter et lire des plaques à partir de vidéos.
+Ce projet, développé dans le cadre de notre module PAS "Projet Académique & Scientifique" lors de ma formation en école d’ingénieurs en Data et Intelligence Artificielle, est une application de reconnaissance automatique des plaques d'immatriculation à partir des Images/Vdéo . Il utilise les capacités des modèles de **computer vision**, en particulier **YOLOv8** et **OCR**, pour détecter et lire des plaques à partir de vidéos.
 
 ## Fonctionnalités
 
